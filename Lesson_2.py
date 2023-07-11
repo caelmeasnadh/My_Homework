@@ -19,5 +19,4 @@ print(rozryad(12391))
 fizz_number = int(input("Enter your fizz number : "))
 buzz_number = int(input("Enter your buzz number : "))
 count_number = int(input("Enter your count number : "))
-i = 0
 [print((not i % fizz_number)*"F" + (not i % buzz_number)*"B" or i) for i in range(1, count_number + 1)]
