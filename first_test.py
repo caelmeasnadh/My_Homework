@@ -14,7 +14,7 @@ def shortener(string):
     for word in string.split():
         if len(word) > 6:
             result.append(word[:6] + '*')
-        if len(word) < 6:
+        if len(word) <= 6:
             result.append(word)
     return ' '.join(result)
 
@@ -22,7 +22,7 @@ def shortener(string):
 def compare_ends(words):
     result = 0
     for word in words:
-        if len(word) > 2 and word[0] == word[-1]:
+        if len(word) > 1 and word[0] == word[-1]:
             result += 1
     return result
 
