@@ -1,0 +1,88 @@
+# https://www.codewars.com/kata/54147087d5c2ebe4f1000805
+
+def _if(bool, func1, func2):
+    return func1() if bool else func2()
+
+# https://www.codewars.com/kata/586909e4c66d18dd1800009b
+
+def multiply_all(a) :
+    def b(c) :
+        return [i*c for i in a]
+    return b
+
+# https://www.codewars.com/kata/583952fbc23341c7180002fd
+
+def order_food(lst): 
+    result = {}
+    for item in lst :
+        if item['meal'] in result :
+            result[item['meal']] +=1
+        else :
+            result[item['meal']] = 1
+    return result
+
+# https://www.codewars.com/kata/582dace555a1f4d859000058
+
+def find_admin(lst, lang):
+    return [item for item in lst if item["language"] == lang and item["githubAdmin"] == "yes"]
+
+# https://www.codewars.com/kata/582ba36cc1901399a70005fc
+
+def get_average(lst): 
+    result = []
+    for item in lst:
+        if item['age'] > 0:
+            result.append(item['age'])
+    return round(sum(result) / len(result))
+
+
+# https://www.codewars.com/kata/58287977ef8d4451f90001a0
+
+def is_same_language(lst): 
+    language = lst[0]['language']
+    for item in lst:
+        if not item['language'] == language:
+            return False
+    return True
+        
+# https://www.codewars.com/kata/5827bc50f524dd029d0005f2/python
+
+def get_first_python(users):
+    for item in users:
+        if item["language"] == "Python":
+            return f"{item['first_name']}, {item['country']}"
+    return "There will be no Python developers"
+
+# https://www.codewars.com/kata/5827acd5f524dd029d0005a4
+
+def is_ruby_coming(lst): 
+    
+    for item in lst:
+        if item["language"] == "Ruby":
+            return True
+
+    return False
+
+# https://www.codewars.com/kata/58279e13c983ca4a2a00002a
+
+def greet_developers(lst): 
+    for x in lst :
+        x['greeting'] = f"Hi {x['firstName']}, what do you like the most about {x['language']}?"
+    return lst
+
+# https://www.codewars.com/kata/582746fa14b3892727000c4f
+
+def count_developers(lst):
+    result = 0
+    for item in lst :
+        if item['continent'] == 'Europe' and item['language'] == 'JavaScript' :
+            result += 1
+    return result
+
+# https://www.codewars.com/kata/563f879ecbb8fcab31000041
+
+def factory(number):
+    def my_fives(array):
+        return [number1 * number for number1 in array]
+    return my_fives
+
