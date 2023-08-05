@@ -1,7 +1,7 @@
 # SQL. Lesson 2.
 Я вибрав створювати базу фільми-актори-режисери, створював поступово, спочатку створив декілька колонок, потім додав ще пару за допомогою ``` alter table ```.
 
-```
+```sql
 create database films;
 \c films
 
@@ -27,7 +27,7 @@ create table favorite_films (
 
 Далі заповнив таблиці інформацією :
 
-```
+```sql
 insert into actors(actor_name, birth_date) values
 ('Woody Harrelson', 1961),
 ('Christian Bale', 1974),
@@ -52,7 +52,7 @@ insert into favorite_films(ame, date_of_creation) values
 ```
 Потім додав ще декілька колонок :
 
-```
+```sql
 
 alter table actors add column number_of_movies int not null default 5;
 alter table directors add column director_number_of_movies int not null default 5;
@@ -63,7 +63,7 @@ alter table favorite_films add column viewed boolean not null default true;
 
 Вже залив скріни з домашньою роботою №2, продублюю сюди запити з  ``` update, delete, fetch, truncate ``` :
 
-```
+```sql
 
 update favorite_films set viewed = true where id = 5;
 
@@ -84,7 +84,7 @@ truncate table actors;
   * другий акторів та фільми, у яких вони грали;
   * третій виведе актрів, режисерів, та фільми, над якими вони працювали.
 
-```
+```sql
 select actor_name, director_name from actors a inner join directors d on (a.id = d.id);
 
 select actor_name, name from actors a inner join favorite_films f on(a.id = f.id);
