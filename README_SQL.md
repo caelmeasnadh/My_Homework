@@ -35,7 +35,7 @@ insert into actors(actor_name, birth_date) values
 ('Matthew McConaughey', 1969),
 ('Mark Waschke', 1972);
 
-insert inro directors(director_name, birth_date) values
+insert into directors(director_name, birth_date) values
 ('Matt Reeves', 1966)
 ('Christopher Nolan', 1970)
 ('Mary Harron', 1953)
@@ -91,6 +91,7 @@ select actor_name, director_name, name from actors a inner join favorite_films f
 ```
 
 [Мій дамп бази даних, ДЗ по SQL №1](https://github.com/caelmeasnadh/my_homework/blob/master/Lesson_1.SQL.sql)
+
 [Друге дз з скріншотами запитів та дампом](https://github.com/caelmeasnadh/my_homework/tree/master/Lesson_2.%20SQL)
 
 
