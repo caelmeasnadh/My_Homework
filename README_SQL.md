@@ -42,7 +42,7 @@ insert into directors(director_name, birth_date) values
 ('David Fincher', 1962)
 ('Baran bo Odar', 1978);
 
-insert into favorite_films(ame, date_of_creation) values
+insert into favorite_films(name, date_of_creation) values
 ('War for the planet of Apes', 2017)
 ('Interstellar', 2014)
 ('American Psycho', 2000)
