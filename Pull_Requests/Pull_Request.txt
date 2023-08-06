@@ -1,0 +1,2 @@
+1. https://github.com/LipovArs/joint_repo  -  https://github.com/LipovArs/joint_repo/pull/5/files
+2. https://github.com/ArturGalstyan96/Codewars.py  -  https://github.com/ArturGalstyan96/Codewars.py/pull/1/files
