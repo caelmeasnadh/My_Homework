@@ -102,8 +102,9 @@ select director_name, name, date_of_creation from favorite_films right join dire
 
 [Мій дамп бази даних, ДЗ по SQL №1](https://github.com/caelmeasnadh/my_homework/blob/master/Lesson_1.SQL.sql)
 
-[Друге дз з скріншотами запитів та дампом](https://github.com/caelmeasnadh/my_homework/tree/master/Lesson_2.%20SQL)
+[Дз №2 з скріншотами запитів та дампом](https://github.com/caelmeasnadh/my_homework/tree/master/Lesson_2.%20SQL)
 
+[3-й дамп](https://github.com/caelmeasnadh/my_homework/blob/master/Lesson_3.SQL.sql)
 
 
 
