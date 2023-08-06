@@ -87,13 +87,24 @@ select actor_name, director_name from actors a inner join directors d on (a.id =
 
 select actor_name, name from actors a inner join favorite_films f on(a.id = f.id);
 
-select actor_name, director_name, name from actors a inner join favorite_films f on(a.id = f.id) inner join directors d on (d.id = f.id);
+select actor_name, director_name, name from actors a inner join favorite_films f on(a.id = f.id) inner join directors d on (d.id = f.id)
+```
+
+Декілька прикладів ```left join, right join, full join```:
+
+```sql
+select actor_name, number_of_movies, director_name, director_number_of_movies from actors left join directors using(id);
+
+select * from actors full join directors using(id) order by id limit 1 offset 3;
+
+select director_name, name, date_of_creation from favorite_films right join directors using(id) order by date_of_creation;
 ```
 
 [Мій дамп бази даних, ДЗ по SQL №1](https://github.com/caelmeasnadh/my_homework/blob/master/Lesson_1.SQL.sql)
 
-[Друге дз з скріншотами запитів та дампом](https://github.com/caelmeasnadh/my_homework/tree/master/Lesson_2.%20SQL)
+[Дз №2 з скріншотами запитів та дампом](https://github.com/caelmeasnadh/my_homework/tree/master/Lesson_2.%20SQL)
 
+[3-й дамп](https://github.com/caelmeasnadh/my_homework/blob/master/Lesson_3.SQL.sql)
 
 
 
