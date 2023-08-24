@@ -1,0 +1,16 @@
+08/24/23 - 19:30:46 :
+ Traceback (most recent call last):
+  File "C:\Users\caelmeasnadh\PycharmProjects\pythonProject\OOP_Lesson_4_Employee.py", line 13, in __init__
+    self.validate_email(email)
+  File "C:\Users\caelmeasnadh\PycharmProjects\pythonProject\OOP_Lesson_4_Employee.py", line 46, in validate_email
+    raise EmailAlreadyExistsException("Email already exists")
+exceptions.EmailAlreadyExistsException: Email already exists
+ 
+08/24/23 - 19:30:46 :
+ Traceback (most recent call last):
+  File "C:\Users\caelmeasnadh\PycharmProjects\pythonProject\OOP_Lesson_4_Employee.py", line 13, in __init__
+    self.validate_email(email)
+  File "C:\Users\caelmeasnadh\PycharmProjects\pythonProject\OOP_Lesson_4_Employee.py", line 46, in validate_email
+    raise EmailAlreadyExistsException("Email already exists")
+exceptions.EmailAlreadyExistsException: Email already exists
+ 
