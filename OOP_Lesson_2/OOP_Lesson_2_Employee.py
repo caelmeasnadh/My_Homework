@@ -6,9 +6,7 @@ class Employee:
     def work(self):
         return 'I come to the office'
 
-    def __str__(self):
-        return (type(self).__name__)
-
+# Тут був дублікат методу __str__, видалив його, залишивши тільки перероблений варіант
     def __str__(self):
         return f'{(type(self).__name__)} : {(self.name)}'
 
@@ -48,12 +46,14 @@ developer_2 = Developer("Harry", 2500)
 print(employee_1.work())
 print(recruter_1.work())
 print(developer_1.work())
-print(employee_1.__str__())
-print(employee_2.__str__())
-print(recruter_1.__str__())
-print(recruter_2.__str__())
-print(developer_1.__str__())
-print(developer_2.__str__())
+# Викликав методи невірним способом - print(employee_1.__str__()).
+print(employee_1)
+print(employee_2)
+print(recruter_1)
+print(recruter_2)
+print(developer_1)
+print(developer_2)
+
 print(employee_1 > employee_2)
 print(employee_1 < employee_2)
 print(employee_1 == employee_2)
