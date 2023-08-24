@@ -36,5 +36,6 @@ sum_off_calls = 0
 for phone in phones:
     sum_off_calls += phone._get_number_of_calls()
 print('Number of calls : ', sum_off_calls)
-with open("C:/Users/datex/Documents/OOP_Lesson_1.txt.", 'r+') as f:
+# Був вказаний повний шлях до файлу та крапка у кінці
+with open("OOP_Lesson_1.txt", 'r+') as f:
     f.write(f'Number of calls : {(str(sum_off_calls))}')
