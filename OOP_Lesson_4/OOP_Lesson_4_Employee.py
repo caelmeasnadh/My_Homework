@@ -2,21 +2,15 @@ import csv
 import datetime
 from exceptions import EmailAlreadyExistsException
 import traceback
+import requests
 
+# Переробив init, зробив email обов*язковим
 class Employee:
-    def __init__(self, name, salary_for_one_day, email = None):
+    def __init__(self, name, salary_for_one_day, email):
         self.name = name
         self.salary_for_one_day = salary_for_one_day
-        if email:
-            self.email = email
-            try:
-                self.validate_email(email)
-                self.save_email()
-            except EmailAlreadyExistsException:
-                self.invalid_email()
-
-    def __str__(self):
-        return (type(self).__name__)
+        self.email = email
+        self.set_email(email)
 
     def __str__(self):
         return f'{(type(self).__name__)} : {(self.name)}'
@@ -52,22 +46,30 @@ class Employee:
             trace = traceback.format_exc()
             file2.write(f'{time} :\n {trace} \n')
 
+    def set_email(self, email):
+        try:
+            self.validate_email(email)
+            self.save_email()
+        except EmailAlreadyExistsException:
+            self.invalid_email()
+
 
 class Recruter(Employee):
     def work(self):
         return 'I come to the office and start hiring'
 
 
+# Переробив ініт так, щоб можна було записувати email
 class Developer(Employee):
-    def __init__(self, name, salary_for_one_day, tech_stack):
-        super().__init__(name, salary_for_one_day)
+    def __init__(self, *args, tech_stack, **kwargs):
+        super().__init__(*args, **kwargs)
         self.tech_stack = tech_stack
 
     def __add__(self, other):
         new_name = self.name + ' ' + other.name
         new_max_salary = max(self.salary_for_one_day, other.salary_for_one_day)
         new_tech_stack = set(self.tech_stack + other.tech_stack)
-        return Developer(new_name, new_max_salary, new_tech_stack)
+        return Developer(new_name, new_max_salary, tech_stack = new_tech_stack, email = None)
 
     def __eq__(self, other):
         return len(self.tech_stack) == len(other.tech_stack)
@@ -84,20 +86,26 @@ class Developer(Employee):
     def check_salary(self, days):
         return self.salary_for_one_day * days
 
+# Переробив метод вирахування зарплати до поточного дня, не включаючи вихідні дні
     def check_salary_until_today(self):
+        today = datetime.date.today()
+        month_start = today.replace(day=1)
+        start_of_month = month_start
         days_number = 0
-        for d in (datetime.date(2023, 8, i) for i in range(1, datetime.datetime.now().day)):
-            if d.weekday() < 5:
+
+        while start_of_month <= today:
+            if start_of_month.weekday() < 5:
                 days_number += 1
+            start_of_month += datetime.timedelta(days=1)
         return self.salary_for_one_day * days_number
 
 
 employee_1 = Employee("George", 1500, "blablabla@gmail.com")
 employee_2 = Employee("Lucas", 1750, "blablabla2@gmail.com")
-recruter_1 = Recruter("Denis", 2000)
-recruter_2 = Recruter("Will", 2250)
-developer_1 = Developer("Arnold", 2500, ['Java'])
-developer_2 = Developer("Harry", 3000, ['FrontEnd', 'Python', 'Java'])
+recruter_1 = Recruter("Denis", 2000, "blablabla3@gmail.com")
+recruter_2 = Recruter("Will", 2250, "blablabla4@gmail.com")
+developer_1 = Developer("Arnold", 2500, tech_stack = ['Java'], email = "blablabla5@gmail.com")
+developer_2 = Developer("Harry", 3000, tech_stack = ['FrontEnd', 'Python', 'Java'], email = "blablabla6@gmail.com")
 
 print(employee_1.work())
 print(recruter_1.work())
