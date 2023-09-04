@@ -4,7 +4,7 @@ from exceptions import EmailAlreadyExistsException
 import traceback
 import requests
 
-# Переробив init, зробив email обов*язковим
+
 class Employee:
     def __init__(self, name, salary_for_one_day, email):
         self.name = name
@@ -59,7 +59,6 @@ class Recruter(Employee):
         return 'I come to the office and start hiring'
 
 
-# Переробив ініт так, щоб можна було записувати email
 class Developer(Employee):
     def __init__(self, *args, tech_stack, **kwargs):
         super().__init__(*args, **kwargs)
@@ -86,7 +85,6 @@ class Developer(Employee):
     def check_salary(self, days):
         return self.salary_for_one_day * days
 
-# Переробив метод вирахування зарплати до поточного дня, не включаючи вихідні дні
     def check_salary_until_today(self):
         today = datetime.date.today()
         month_start = today.replace(day=1)
