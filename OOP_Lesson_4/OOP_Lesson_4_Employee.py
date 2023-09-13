@@ -9,7 +9,6 @@ class Employee:
     def __init__(self, name, salary_for_one_day, email):
         self.name = name
         self.salary_for_one_day = salary_for_one_day
-        self.email = email
         self.set_email(email)
 
     def __str__(self):
@@ -49,6 +48,7 @@ class Employee:
     def set_email(self, email):
         try:
             self.validate_email(email)
+            self.email = email
             self.save_email()
         except EmailAlreadyExistsException:
             self.invalid_email()
