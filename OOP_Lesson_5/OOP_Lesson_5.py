@@ -27,31 +27,35 @@ class Employee:
     def work(self):
         return 'I come to the office'
 
-    def save_email(self):
-        with open("emails.csv", 'a', newline='') as file:
-            write = csv.writer(file)
-            write.writerow([self.email])
+    def set_email(self, email):
+        try:
+            EmailValidator.validate_email(email)
+            EmailValidator.save_email(self)
+        except EmailAlreadyExistsException:
+            Logger.invalid_email()
 
-    def validate_email(self, email):
-        with open("emails.csv", 'r', newline='') as file1:
-            read = csv.reader(file1)
+
+class EmailValidator:
+    def validate_email(email):
+        with open("emails.csv", 'r', newline='') as file:
+            read = csv.reader(file)
             for row in read:
                 if email in row:
                     raise EmailAlreadyExistsException("Email already exists")
         print("Validation successful")
 
-    def invalid_email(self):
-        with open("logs.txt", 'a', newline='') as file2:
+    def save_email(self):
+        with open("emails.csv", 'a', newline='') as file:
+            write = csv.writer(file)
+            write.writerow([self.email])
+
+
+class Logger:
+    def invalid_email():
+        with open("logs.txt", 'a', newline='') as file:
             time = datetime.datetime.now().strftime("%D - %H:%M:%S")
             trace = traceback.format_exc()
-            file2.write(f'{time} :\n {trace} \n')
-
-    def set_email(self, email):
-        try:
-            self.validate_email(email)
-            self.save_email()
-        except EmailAlreadyExistsException:
-            self.invalid_email()
+            file.write(f'{time} :\n {trace} \n')
 
 
 class Recruter(Employee):
@@ -84,6 +88,7 @@ class Developer(Employee):
 
     def check_salary(self, days):
         return self.salary_for_one_day * days
+
 
     def check_salary_until_today(self):
         today = datetime.date.today()
